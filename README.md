@@ -23,9 +23,8 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - fantasy_name string
 - phone string 
 - address_id string one to one
-- proof_address string
 - address_complement string
-- document string
+- proof_address string
 - status enum "active" | "pending" | "reprove" | "inactive"
 - user_ids one to many users
 
@@ -80,6 +79,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - comment? string
 - driver_id one to one
 - corporate_id one to one corporates
+- quantity int default 0
 
 ## alerts_settings
 - name string
@@ -106,6 +106,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 ## rattings
 - corporate_id one to one corporates
 - driver_id one to one drivers
+- trip_id one to one trips
 - rated int
 
 ## trips
@@ -132,7 +133,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - implements one to many vehicles
 - deliverys_shippings_data JSON
 - trip_services_ids one to many tripServices
-- trip_deliverys_shippings_ids one to many tripDeliverysShippings
+- trip_deliverys_shippings_ids one to many trip_deliverys_shippings
 - checklist_id one to one checklists
 - checklist_answer JSON
 
@@ -140,12 +141,14 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - address_id one to one addresses
 - corporate_id one to one corporates
 - document string
+- name string
 - phone string
 - status enum "inactive" | "active"
 
 ## trip_services
 - trip_id one to one trips
-- price float
+- price? float
+- required boolean
 - type enum "food" | "supply" | "overnight"
 - service_id one to one services
 
@@ -159,13 +162,15 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 ## services
 - corporate_id one to one corporates
 - price float
-- type enum "food" | "supply" | "overnight"
+- document string
+- name string
+- types enum "food" | "supply" | "overnight"
 
 ## deliverys_shippings
 - corporate_id one to one corporates
-- type enum "delivery" | "shipping"
-- quantity number
-- price float
+- types enum "delivery" | "shipping"
+- document string
+- name string
 
 ## routes
 - corporate_id one to one corporates
@@ -223,7 +228,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - status enum "inactive" | "active"
 - questions JSON
   {
-    type enum "text" | "
+    type enum "text" | ""
   }
 
 ## trip_tracking
