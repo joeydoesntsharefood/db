@@ -131,7 +131,11 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - addressId one to one addresses
 - 
 
+## services
+
 ## tripServices
+
+## deliverysShippings
 
 ## tripDeliverysShippings
 
@@ -144,10 +148,6 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 ## driversBigData
 
 ## parameters
-
-## services
-
-## deliverysShippings
 
 ## driverDevices
 
