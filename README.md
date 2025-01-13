@@ -1,8 +1,8 @@
-### Regras
+## Regras
 - Todos os ids de relacionais vão ser os publicId considerando ser um dado que vai ser exposto
-- Todos os ids não podem estar nos dtos
+- Todos os ids increment não podem estar nos dtos
 
-### Padrões do banco
+## Padrões do banco
 Esses padrões tem que ser centralizados em algum local do sistema, sendo carregado por cada um das nossas entidades como herança, para faciitar a manutenção e escrita dos códigos
 
 - Vamos utilizar o "publicId" uuidv4 devido não ser human readble.
@@ -11,7 +11,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - updatedAt timestamp default now sempre que atualizar adicionar um timestamp now
 - usable boolean default true vai ser usado para caso um usuário realizar uma deleção, mantendo o dado sem alterar status
 
-### Tables
+## Tables
 
 ## corporates
 - type enum "carrier" | "riskManager"
