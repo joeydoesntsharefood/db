@@ -81,6 +81,8 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - driverId one to one
 - corporateId one to one corporates
 
+## alertsSettings
+
 ## drivers
 - name string
 - oneSignalId string
@@ -118,6 +120,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - timeTravel string
 - status enum "pending" | "enRoute" | "delivery" | "shipping" | "food" | "supply" | "overnight" | "finish"
 - servicesData JSON
+  (estou formulando ainda o JSON)
 - vehicleId one to one vehicles
 - implements one to many vehicles
 - deliverysShippingsData JSON
@@ -134,3 +137,20 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 
 ## routes
 
+## permissions
+
+## tokens
+
+## driversBigData
+
+## parameters
+
+## services
+
+## deliverysShippings
+
+## driverDevices
+
+## corporatesBigData
+
+## checklists
