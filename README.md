@@ -1,20 +1,20 @@
 ## Regras
-- Todos os ids de relacionais vão ser os publicId considerando ser um dado que vai ser exposto
+- Todos os ids de relacionais vão ser os public_id considerando ser um dado que vai ser exposto
 - Todos os ids increment não podem estar nos dtos
 
 ## Padrões do banco
 Esses padrões tem que ser centralizados em algum local do sistema, sendo carregado por cada um das nossas entidades como herança, para faciitar a manutenção e escrita dos códigos
 
-- Vamos utilizar o "publicId" uuidv4 devido não ser human readble.
+- Vamos utilizar o "public_id" uuid v4 devido não ser human readble.
 - Vamos utilizar o "id" increment para ter um sort caso necessário utilizar por inserção
-- createdAt timestamp default now
-- updatedAt timestamp default now sempre que atualizar adicionar um timestamp now
+- created_at timestamp default now
+- updated_at timestamp default now sempre que atualizar adicionar um timestamp now
 - usable boolean default true vai ser usado para caso um usuário realizar uma deleção, mantendo o dado sem alterar status
 
 ## Tables
 
 ## corporates
-- type enum "carrier" | "riskManager"
+- types enum "carrier" | "riskManager"
 - support_wpp boolean
 - document string unique
 - document_uri string 
@@ -88,11 +88,12 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 ## drivers
 - name string
 - one_signal_id string
-- address_id
+- address_id one to one addresses 
 - address_complement string
 - document string unique
 - document_uri
 - rg? string unique
+- rg_uri? string
 - date_birth string
 - gender string
 - email string unique
@@ -106,6 +107,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 ## rattings
 - corporate_id one to one corporates
 - driver_id one to one drivers
+- details string
 - trip_id one to one trips
 - rated int
 
@@ -118,7 +120,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
     price float
   }
 - return_point_id one to one startReturnPoints
-- return_point_data
+- return_point_data json
   {
     quantity number
     price float
@@ -161,7 +163,6 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 
 ## services
 - corporate_id one to one corporates
-- price float
 - document string
 - name string
 - types enum "food" | "supply" | "overnight"
@@ -209,11 +210,6 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - driver_id one to one drivers
 - data JSON (varia de acordo com o Big Data n se preocupar)
 
-## parameters
-- corporate_id one to one corporates
-- digital_fence int size 40
-- parameter JSON (n sei o JSON)
-
 ## driver_devices
 - driver_id one to one drivers
 - data JSON (n sei o JSON)
@@ -231,10 +227,16 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
     type enum "text" | ""
   }
 
+## drivers_comporate
+- corporate_id one to one corporates
+- driver_id one to one drivers
+- status enum "pending" | "aprove" | "reprove"
+
 ## trip_tracking
 - lat float
 - lng flaot
 - speed float
+- signalForce float
 - road_speed
 - trip_id one to one trips
 - driver_id one to one drivers
