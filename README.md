@@ -15,25 +15,25 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 
 ## corporates
 - type enum "carrier" | "riskManager"
-- supportWpp boolean
+- support_wpp boolean
 - document string unique
-- documentURI string 
-- corporateName string 
+- document_uri string 
+- corporate_name string 
 - email string unique
-- fantasyName string
+- fantasy_name string
 - phone string 
-- addressId string one to one
-- proofAddress string
-- addressComplement string
+- address_id string one to one
+- proof_address string
+- address_complement string
 - document string
 - status enum "active" | "pending" | "reprove" | "inactive"
-- userIds one to many users
+- user_ids one to many users
 
 ## addresses
-- plusCode
 - type enum "plusCode" | "publicPlace" | "latLng"
 - lat float
 - lng flaot
+- alias? string
 - data JSON (contem os inseridos do endereco podendo ser 3 tipos)
   
   publicPlace
@@ -65,92 +65,171 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - email string unique
 - phone string
 - password string
-- permissionId one to one permissions
+- permission_id one to one permissions
 - status "active" | "inactive"
-- isMaster? boolean
-- corporateId? one to one corporates
-- avatarUri string
+- is_master? boolean
+- corporate_id? one to one corporates
+- avatar_uri string
 
 ## alerts
 - lat float
 - lng flaot
 - status enum "peding" | "resolve"
-- tripId one to one
+- trip_id one to one
 - details? string
 - comment? string
-- driverId one to one
-- corporateId one to one corporates
+- driver_id one to one
+- corporate_id one to one corporates
 
-## alertsSettings
+## alerts_settings
+- name string
+- data JSON (irei fazer um json de example dps)
 
 ## drivers
 - name string
-- oneSignalId string
-- addressId
-- addressComplement string
+- one_signal_id string
+- address_id
+- address_complement string
 - document string unique
-- documentURI
+- document_uri
 - rg? string unique
-- dateBirth string
+- date_birth string
 - gender string
 - email string unique
 - phone string
-- avatarUri string
+- avatar_uri string
 - password string
 - token? string
 - status enum "active" | "pending" | "reprove" | "inactive"
 - rated? int
 
-## trips
-- routeId one to one routes
-- starPoint one to one startReturnPoints
-- startPointData json
-  {
-    quantity number
-    price float
-  }
-- returnPoint one to one startReturnPoints
-- returnPointData
-  {
-    quantity number
-    price float
-  }
-- driverId one to one drivers
-- distancy string
-- timeTravel string
-- status enum "pending" | "enRoute" | "delivery" | "shipping" | "food" | "supply" | "overnight" | "finish"
-- servicesData JSON
-  (estou formulando ainda o JSON)
-- vehicleId one to one vehicles
-- implements one to many vehicles
-- deliverysShippingsData JSON
-- tripServicesIds one to many tripServices
-- tripDeliverysShippingsIds one to many tripDeliverysShippings
+## rattings
+- corporate_id one to one corporates
+- driver_id one to one drivers
+- rated int
 
-## startReturnPoints
-- addressId one to one addresses
-- 
+## trips
+- route_id one to one routes
+- star_point_id one to one startReturnPoints
+- start_point_data json
+  {
+    quantity number
+    price float
+  }
+- return_point_id one to one startReturnPoints
+- return_point_data
+  {
+    quantity number
+    price float
+  }
+- driver_id one to one drivers
+- distancy string
+- time_travel string
+- status enum "pending" | "enRoute" | "delivery" | "shipping" | "food" | "supply" | "overnight" | "finish"
+- services_data JSON
+  (estou formulando ainda o JSON)
+- vehicle_id one to one vehicles
+- implements one to many vehicles
+- deliverys_shippings_data JSON
+- trip_services_ids one to many tripServices
+- trip_deliverys_shippings_ids one to many tripDeliverysShippings
+- checklist_id one to one checklists
+- checklist_answer JSON
+
+## start_return_points
+- address_id one to one addresses
+- corporate_id one to one corporates
+- document string
+- phone string
+- status enum "inactive" | "active"
+
+## trip_services
+- trip_id one to one trips
+- price float
+- type enum "food" | "supply" | "overnight"
+- service_id one to one services
+
+## trip_deliverys_shippings
+- trip_id one to one trips
+- deliverys_shippings_id one to one deliverysShippings
+- type enum "delivery" | "shipping"
+- quantity number
+- price float
 
 ## services
+- corporate_id one to one corporates
+- price float
+- type enum "food" | "supply" | "overnight"
 
-## tripServices
-
-## deliverysShippings
-
-## tripDeliverysShippings
+## deliverys_shippings
+- corporate_id one to one corporates
+- type enum "delivery" | "shipping"
+- quantity number
+- price float
 
 ## routes
+- corporate_id one to one corporates
+- name string
+- star_point_id one to one startReturnPoints
+- return_point_id one to one startReturnPoints
+- distancy string
+- time_travel string
+- routes_services_ids one to many routes_services
+- routes_deliverys_shippings_ids one to many routes_deliverys_shippings
+- additional_way_points JSON
+
+## routes_services
+- route_id one to one route
+- price float
+- type enum "food" | "supply" | "overnight"
+- service_id one to one services
+
+## routes_deliverys_shippings
+- route_id one to one route
+- type enum "delivery" | "shipping"
+- quantity number
+- price float
 
 ## permissions
+- users_id one to many users
+- corporate_id? one to one corporates
+- name string
+- data JSON Array<string>
 
 ## tokens
+- user_id one to one
+- token string
 
-## driversBigData
+## drivers_big_data
+- driver_id one to one drivers
+- data JSON (varia de acordo com o Big Data n se preocupar)
 
 ## parameters
+- corporate_id one to one corporates
+- digital_fence int size 40
+- parameter JSON (n sei o JSON)
 
-## driverDevices
+## driver_devices
+- driver_id one to one drivers
+- data JSON (n sei o JSON)
 
-## corporatesBigData
+## corporates_big_data
+- corporate_id one to one corporates
+- data JSON (varia de acordo com o Big Data n se preocupar)
 
-## checklists
+## check_lists
+- corporate_id one to one corporates
+- name
+- status enum "inactive" | "active"
+- questions JSON
+  {
+    type enum "text" | "
+  }
+
+## trip_tracking
+- lat float
+- lng flaot
+- speed float
+- road_speed
+- trip_id one to one trips
+- driver_id one to one drivers
