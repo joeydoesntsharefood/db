@@ -161,7 +161,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - quantity number
 - price float
 
-## services
+## services_corporates
 - corporate_id one to one corporates
 - document string
 - name string
