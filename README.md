@@ -83,7 +83,11 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 
 ## alerts_settings
 - name string
-- data JSON (irei fazer um json de example dps)
+- data JSON
+  {
+    "trigger": string,
+    "value": string | number
+  }[]
 
 ## drivers
 - name string
