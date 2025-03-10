@@ -234,7 +234,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 ## drivers_corporate
 - corporate_id one to one corporates
 - driver_id one to one drivers
-- status enum "pending" | "aprove" | "reprove"
+- status enum "pending" | "aprove" | "reprove" | "unlinked"
 - type_of_contract enum "CTL" | "PJ"
 - sender enum "driver" | "corporate"
 
