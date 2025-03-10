@@ -231,7 +231,7 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
     type enum "text" | ""
   }
 
-## drivers_comporate
+## drivers_corporate
 - corporate_id one to one corporates
 - driver_id one to one drivers
 - status enum "pending" | "aprove" | "reprove"
