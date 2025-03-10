@@ -235,7 +235,8 @@ Esses padrões tem que ser centralizados em algum local do sistema, sendo carreg
 - corporate_id one to one corporates
 - driver_id one to one drivers
 - status enum "pending" | "aprove" | "reprove"
-- <pensar no nome> enum "CTL" | "PJ"
+- type_of_contract enum "CTL" | "PJ"
+- sender enum "driver" | "corporate"
 
 ## trip_tracking
 - lat float
